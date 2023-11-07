@@ -3,15 +3,17 @@
     import SignIn from './SignIn.svelte';
 	import { supauser  } from './store';
 
-function toggleComp(){
-	comp = SignIn
-}
-function hideSignIn(){
-	comp =null
-}
-
-
 	let comp =null
+    
+	function toggleComp(){
+	    comp = SignIn
+    }
+   function hideSignIn(){
+	 comp =null
+   }
+
+
+
 	
 </script>
 
