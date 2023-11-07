@@ -1,11 +1,33 @@
 <script>
-	export let name;
+
+    import SignIn from './SignIn.svelte';
+	import { supauser  } from './store';
+
+function toggleComp(){
+	comp = SignIn
+}
+function hideSignIn(){
+	comp =null
+}
+
+
+	let comp =null
+	
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+		
+<button on:click={toggleComp}>Comp</button>
+
+		{#if $supauser.user != null }
+			<p>x{$supauser.user.id}</p>
+		{/if}
+
+		<svelte:component this={comp} hide={hideSignIn}/>
+
+
+       
+ </main>
 
 <style>
 	main {
@@ -15,12 +37,12 @@
 		margin: 0 auto;
 	}
 
-	h1 {
+	/* h1 {
 		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
-	}
+	} */
 
 	@media (min-width: 640px) {
 		main {
