@@ -2,11 +2,13 @@
 
     import SignIn from './SignIn.svelte';
 	import { supauser  } from './store';
+	import Form from './form.svelte'
 
 	let comp =null
     
 	function toggleComp(){
-	    comp = SignIn
+	    // comp = SignIn
+		comp = Form
     }
    function hideSignIn(){
 	 comp =null

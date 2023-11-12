@@ -3,8 +3,25 @@
  
  import { supabase } from "./store";
 	import {supauser} from "./store"
+
 	// import User from './user.svelte'
  
+  import createSvelidation from 'svelidation';
+
+  const { createForm, createEntry } = createSvelidation();
+  ///////////
+  const [ errorsString0, valueString0, inputString0 ] = createEntry({
+  type: 'string',
+  value: 'qwer',
+  min: 2,
+  required: true
+});
+/////////
+
+
+
+
+
  let email='vkondra@gmail.com'
  export let hide;
 
@@ -16,6 +33,7 @@
  $: pwderr = pwd != pwd2
 
 const signup = async()=>{
+ 
     const { data, error } = await supabase.auth.signUp({
               email: email,
               password: pwd,
@@ -29,6 +47,10 @@ const signup = async()=>{
 }
 
 async function signInUser() {
+  console.log('errorsString0',$errorsString0)
+  console.log('valueString0,',$valueString0)
+  //console.log('inputString0,',$inputString0)
+
 
 const { data, error } = await supabase.auth.signInWithPassword({
   email: email,
@@ -38,7 +60,7 @@ const { data, error } = await supabase.auth.signInWithPassword({
 console.log("???",error, data)
   if (data.user){
     $supauser.user=data.user
-    hide()
+   // hide()
 }
 
 }
@@ -57,8 +79,22 @@ console.log("???",error, data)
     </div>
   
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form on:submit|preventDefault={signInUser} 
+      <form  use:createForm  on:submit|preventDefault={signInUser} 
       class="space-y-6" >
+
+      <div>
+        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+        <div class="mt-2">
+       
+          <input type="text" bind:value={$valueString0} use:inputString0 />
+          {#each $errorsString0 as errorCode}
+            <p>{errorCode} rule validation error</p>
+          {/each}
+       
+        </div>
+       </div>
+
+
         <div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
           <div class="mt-2">
