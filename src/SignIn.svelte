@@ -6,22 +6,6 @@
 
 	// import User from './user.svelte'
  
-  import createSvelidation from 'svelidation';
-
-  const { createForm, createEntry } = createSvelidation();
-  ///////////
-  const [ errorsString0, valueString0, inputString0 ] = createEntry({
-  type: 'string',
-  value: 'qwer',
-  min: 2,
-  required: true
-});
-/////////
-
-
-
-
-
  let email='vkondra@gmail.com'
  export let hide;
 
@@ -47,9 +31,7 @@ const signup = async()=>{
 }
 
 async function signInUser() {
-  console.log('errorsString0',$errorsString0)
-  console.log('valueString0,',$valueString0)
-  //console.log('inputString0,',$inputString0)
+
 
 
 const { data, error } = await supabase.auth.signInWithPassword({
@@ -60,7 +42,7 @@ const { data, error } = await supabase.auth.signInWithPassword({
 console.log("???",error, data)
   if (data.user){
     $supauser.user=data.user
-   // hide()
+    hide()
 }
 
 }
@@ -69,7 +51,7 @@ console.log("???",error, data)
 </script>
 
 
-<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8  border border-solid border-indigo-600">
   <div class='flex flex-auto justify-end cursor-pointer'>
     <p>&times;</p>
   </div>
@@ -79,24 +61,12 @@ console.log("???",error, data)
     </div>
   
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form  use:createForm  on:submit|preventDefault={signInUser} 
+      <form   on:submit|preventDefault={signInUser} 
       class="space-y-6" >
-
-      <div>
-        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-        <div class="mt-2">
-       
-          <input type="text" bind:value={$valueString0} use:inputString0 />
-          {#each $errorsString0 as errorCode}
-            <p>{errorCode} rule validation error</p>
-          {/each}
-       
-        </div>
-       </div>
 
 
         <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
           <div class="mt-2">
             <input bind:value={email} id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
@@ -104,9 +74,9 @@ console.log("???",error, data)
   
         <div>
           <div>
-            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-
+            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Пароль</label>
           </div>
+
           <div class="mt-2">
             <input bind:value={pwd} id="password" name="password" type="password" autocomplete="current-password" required class="form-input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
@@ -115,7 +85,6 @@ console.log("???",error, data)
         <div>
             <div>
               <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Повторите пароль</label>
-
             </div>
             <div class="mt-2">
               <input bind:value={pwd2}  id="password" name="password" type="password" autocomplete="current-password" required class="form-input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -124,9 +93,6 @@ console.log("???",error, data)
                 <label for="password" class="font-medium text-sm text-orange-500 ">пароли не соответствуют </label>
             {/if}  
         </div>
-
-
-
   
         <div>
           <button type="submit" class="form-input    flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
