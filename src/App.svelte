@@ -1,50 +1,65 @@
 <script>
+	import SignIn from "./SignIn.svelte";
+	import SignUp from "./Signup.svelte";
+	import { supauser } from "./store";
+	import Form from "./form.svelte";
+	import Signup from "./Signup.svelte";
 
-    import SignIn from './SignIn.svelte';
-	import { supauser  } from './store';
-	import Form from './form.svelte'
+	let comp = null;
 
-	let comp =null
-    
-	function toggleComp(){
-	    // comp = SignIn
-		comp = SignIn //Form
-    }
-   function hideSignIn(){
-	 comp =null
-   }
-
-
-
-	
+	function toggleComp() {
+		comp = Signup; //SignIn //Form
+	}
+	function hideSignIn() {
+		comp = null;
+	}
 </script>
 
-<main>
-		
-<button on:click={toggleComp}>Comp</button>
-
-		{#if $supauser.user != null }
+<main class="border border-lime-400 p-2 m-2">
+	<div>
+		<ul class="flex flex-row px-3">
+			<li>
+				<button on:click={toggleComp}>SignUp</button>
+			</li>
+			<li>
+				<button on:click={() => (comp = null)}>Hide</button>
+			</li>
+		</ul>
+	</div>
+	<div class='flex flex-col min-h-full items-center justify-center'>
+		{#if $supauser.user != null}
 			<p>x{$supauser.user.id}</p>
 		{/if}
-
-		<svelte:component this={comp} hide={hideSignIn}/>
-
-
-       
- </main>
+		<p>middle</p>
+		<svelte:component this={comp} hide={hideSignIn} />
+	</div>
+	<div class="mt-auto p-2 bg-slate-200">
+		<p>
+			Footer (подвал). Всегда должен быть внизу страницы. Как сделать?
+			Добавить class="mt-auto". Родитель д.б. flex-col
+		</p>
+	</div>
+</main>
 
 <style>
+	:global(body) {
+		height: 100vh;
+		background-color: rgb(235, 245, 245);
+	}
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
 	}
 
+	ul.flex li {
+		margin-left: 1rem;
+	}
 
-	@media (min-width: 640px) {
+	@media (max-width: 640px) {
 		main {
 			max-width: none;
+			background-color: bisque;
 		}
 	}
 </style>
