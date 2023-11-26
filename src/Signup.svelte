@@ -4,7 +4,7 @@
 
 <!--удалить: min-h-screen  -->
 <!--добавить: border border-gray-400 -->
-<div class=" bg-gray-100 py-6 flex flex-col justify-center sm:py-12 border border-gray-400">
+<div class=" bg-gray-100 py-0 flex flex-col justify-center sm:py-12 border border-gray-400">
 	<div class="relative py-3 sm:max-w-xl sm:mx-auto">
 		<div
 			class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 rounded-3xl">
@@ -12,7 +12,7 @@
 		<div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
 			<div class="max-w-md mx-auto">
 				<div>
-					<h1 class="text-2xl font-semibold">Login Form with Floating Labels</h1>
+					<h1 class="text-2xl font-semibold">Вход</h1>
 				</div>
 				<div class="divide-y divide-gray-200">
 					<div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">

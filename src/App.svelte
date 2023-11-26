@@ -18,8 +18,8 @@
 <!-- main должен занимать все свободное простр-во: h-full -->
 <main class="border border-gray-400 flex flex-col align-middle justify-between min-h-screen h-auto p-2 m-2">
 	<!-- заготовка для top-меню -->
-	<div>
-		<ul class="flex flex-row px-3 bg-cyan-500">
+	<!-- <div> -->
+		<ul class="flex flex-row h-10 content-center  flex-wrap px-3 bg-cyan-500">
 			<li>
 				<button on:click={toggleComp}>SignUp</button>
 			</li>
@@ -27,10 +27,9 @@
 				<button on:click={() => (comp = null)}>Hide</button>
 			</li>
 		</ul>
-	</div>
+	<!-- </div> -->
 
-	<!-- контент должен центрироваться по горизонтали и вертикали
-	flex-grrow:1 обязательно -->
+	<!-- контент должен центрироваться по горизонтали и вертикали-->
 	<div class="flex flex-col items-center justify-center">
 		<!-- tmp для отладки -->
 		{#if $supauser.user != null}
@@ -44,7 +43,6 @@
 		<svelte:component this={comp} hide={hideSignIn} class="self-center"/>
 	
 
-	<!-- margin-top:auto обязательно для фиксации подвала внизу -->
 	<div class=" p-2 bg-blue-300">
 		<p>
 			Footer (подвал). Всегда должен быть внизу страницы. Родитель д.б. flex-col justify-between
