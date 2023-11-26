@@ -6,6 +6,7 @@
 
 	import { supauser } from "./store";
 	import Signup from "./Signup.svelte";
+	import Todo from "./todo.svelte"
 
 	let comp = null;
 
@@ -32,7 +33,7 @@
 		</li>
 		{#if $supauser.user}
 		    <li>
-			    <button on:click={() => (comp = Form)}>Todo</button>
+			    <button on:click={() => (comp = Todo)}>Todo</button>
 		    </li>
 		{/if}
 	</ul>
