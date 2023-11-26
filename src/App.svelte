@@ -16,10 +16,10 @@
 </script>
 
 <!-- main должен занимать все свободное простр-во: h-full -->
-<main class="border border-lime-400 flex flex-col h-full p-2 m-2">
+<main class="border border-gray-400 flex flex-col align-middle justify-between min-h-screen h-auto p-2 m-2">
 	<!-- заготовка для top-меню -->
 	<div>
-		<ul class="flex flex-row px-3">
+		<ul class="flex flex-row px-3 bg-cyan-500">
 			<li>
 				<button on:click={toggleComp}>SignUp</button>
 			</li>
@@ -31,22 +31,23 @@
 
 	<!-- контент должен центрироваться по горизонтали и вертикали
 	flex-grrow:1 обязательно -->
-	<div class="grow flex flex-col items-center justify-center">
+	<div class="flex flex-col items-center justify-center">
 		<!-- tmp для отладки -->
 		{#if $supauser.user != null}
 			<p>x{$supauser.user.id}</p>
 		{/if}
+	</div>	
 		<!-- tmp для проверки центрирования -->
-		<p>middle tmp</p>
+	<!-- <p class="self-center">middle tmp</p> -->
+
 		<!-- место для компонентов -->
-		<svelte:component this={comp} hide={hideSignIn} />
-	</div>
+		<svelte:component this={comp} hide={hideSignIn} class="self-center"/>
+	
 
 	<!-- margin-top:auto обязательно для фиксации подвала внизу -->
-	<div class="mt-auto p-2 bg-slate-200">
+	<div class=" p-2 bg-blue-300">
 		<p>
-			Footer (подвал). Всегда должен быть внизу страницы. Как сделать?
-			Добавить class="mt-auto". Родитель д.б. flex-col
+			Footer (подвал). Всегда должен быть внизу страницы. Родитель д.б. flex-col justify-between
 		</p>
 	</div>
 </main>
