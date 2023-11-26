@@ -1,8 +1,10 @@
 <script>
-	import SignIn from "./SignIn.svelte";
-	import SignUp from "./Signup.svelte";
-	import { supauser } from "./store";
+	// import SignIn from "./SignIn.svelte";
+	// import SignUp from "./Signup.svelte";
+
 	import Form from "./form.svelte";
+
+	import { supauser } from "./store";
 	import Signup from "./Signup.svelte";
 
 	let comp = null;
@@ -16,18 +18,24 @@
 </script>
 
 <!-- main должен занимать все свободное простр-во: h-full -->
-<main class="border border-gray-400 flex flex-col align-middle justify-between min-h-screen h-auto p-2 m-2">
+<main
+	class="border border-gray-400 flex flex-col align-middle justify-between min-h-screen h-auto p-2 m-2"
+>
 	<!-- заготовка для top-меню -->
 
-		<ul class="flex flex-row h-10 content-center  flex-wrap px-3 bg-cyan-500">
-			<li>
-				<button on:click={toggleComp}>SignUp</button>
-			</li>
-			<li>
-				<button on:click={() => (comp = null)}>Hide</button>
-			</li>
-		</ul>
-
+	<ul class="flex flex-row h-10 content-center flex-wrap px-3 bg-cyan-500">
+		<li>
+			<button on:click={toggleComp}>Вход</button>
+		</li>
+		<li>
+			<button on:click={() => (comp = null)}>Hide</button>
+		</li>
+		{#if $supauser.user}
+		    <li>
+			    <button on:click={() => (comp = Form)}>Todo</button>
+		    </li>
+		{/if}
+	</ul>
 
 	<!-- контент должен центрироваться по горизонтали и вертикали-->
 	<div class="flex flex-col items-center justify-center">
@@ -35,17 +43,17 @@
 		{#if $supauser.user != null}
 			<p>x{$supauser.user.id}</p>
 		{/if}
-	</div>	
-		<!-- tmp для проверки центрирования -->
+	</div>
+	<!-- tmp для проверки центрирования -->
 	<!-- <p class="self-center">middle tmp</p> -->
 
-		<!-- место для компонентов -->
-		<svelte:component this={comp} hide={hideSignIn} class="self-center"/>
-	
+	<!-- место для компонентов -->
+	<svelte:component this={comp} hide={hideSignIn} class="self-center" />
 
 	<div class=" p-2 bg-blue-300">
 		<p>
-			Footer (подвал). Всегда должен быть внизу страницы. Родитель д.б. flex-col justify-between
+			Footer (подвал). Всегда должен быть внизу страницы. Родитель д.б.
+			flex-col justify-between
 		</p>
 	</div>
 </main>
@@ -56,16 +64,14 @@
 		background-color: rgb(235, 245, 245);
 	}
 
-
 	/* навигацию сделать компонентом */
 	ul.flex li {
 		margin-left: 1rem;
 	}
- 
-	 @media (max-width: 640px) {
+
+	@media (max-width: 640px) {
 		main {
-			
 			background-color: bisque;
 		}
-	} 
+	}
 </style>
