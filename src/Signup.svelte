@@ -1,5 +1,47 @@
 <script>
-    let a=0
+     //https://svelte-forms-lib-sapper-docs.vercel.app/introduction
+    //npm i svelte-forms-lib
+
+    // https://www.npmjs.com/package/yup
+    //npm i yup
+
+    import { createForm } from "svelte-forms-lib";
+    import * as yup from "yup";
+
+    const { isValid, form, errors, state, handleChange, handleSubmit } =
+        createForm({
+            initialValues: {
+                title: "Mr.",
+                name: "",
+                email: "vvv@mm.com",
+                password: "",
+                confirmpwd: "",
+            },
+
+            validationSchema: yup.object().shape({
+                name: yup
+                    .string()
+                    .min(3, "имя д.б. не менее 3-х символов")
+                    .required("Укажите, пожалуйста, имя"),
+
+                email: yup
+                    .string()
+                    .email("укажите корректный email")
+                    .required(),
+
+                title: yup.string().oneOf(["Mr,", "Mrs", "Mx."]).required(),
+
+                password: yup.string().required("Укажите, пожалуйста, пароль"),
+
+                confirmpwd: yup
+                    .string()
+                    .oneOf([yup.ref("password")], "Пароли не совпадают"),
+            }),
+
+            onSubmit: (values) => {
+                alert(JSON.stringify(values.email));
+            },
+        });
 </script>
 
 <!--удалить: min-h-screen  -->
