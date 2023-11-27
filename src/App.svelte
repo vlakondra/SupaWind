@@ -5,7 +5,7 @@
 	import Form from "./form.svelte";
 
 	import { supauser } from "./store";
-	import Signup from "./Signup.svelte";
+	import Signup from "./Sign_In.svelte";
 	import Todo from "./todo.svelte"
 
 	let comp = null;
@@ -18,7 +18,7 @@
 	}
 </script>
 
-<!-- main должен занимать все свободное простр-во: h-full -->
+
 <main
 	class="border border-gray-400 flex flex-col align-middle justify-between min-h-screen h-auto p-2 m-2"
 >
