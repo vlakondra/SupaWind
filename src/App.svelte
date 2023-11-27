@@ -33,7 +33,7 @@
 		</li>
 		{#if $supauser.user}
 		    <li>
-			    <button on:click={() => (comp = Todo)}>Todo</button>
+			    <button on:click={() => (comp = Todo)}>Список дел</button>
 		    </li>
 		{/if}
 	</ul>

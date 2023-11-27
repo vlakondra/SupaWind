@@ -15,7 +15,7 @@
         }
     });
 </script>
-
+<div>
 {#if todos}
     {#each todos as item}
         <p>
@@ -25,3 +25,4 @@
 {:else}
     <p>Загрузка данных...</p>
 {/if}
+</div>

@@ -69,6 +69,7 @@
 <div
     class=" bg-gray-100 py-0 flex flex-col justify-center sm:py-12 border border-gray-400"
 >
+
     <form on:submit|preventDefault={signInUser}>
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
             <div
@@ -140,9 +141,10 @@
                                 </div>
                             </div>
                             <div class="relative text-right">
-                                <button
+                                <button type='submit'
+                                disabled={!$isValid} 
                                     class="bg-blue-500 text-white rounded-md px-2 py-1"
-                                    >Submit</button
+                                    >Войти</button
                                 >
                             </div>
                         </div>
