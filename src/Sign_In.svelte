@@ -18,8 +18,8 @@
             initialValues: {
                 title: "Mr.",
                 name: "",
-                email: "vvv@mm.com",
-                password: "",
+                email: "user@mail.com",
+                password: "123456",
                 confirmpwd: "",
             },
 
