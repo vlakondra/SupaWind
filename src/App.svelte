@@ -38,19 +38,19 @@
 		{/if}
 	</ul>
 
-	<!-- контент должен центрироваться по горизонтали и вертикали-->
-	<div class="flex flex-col items-center justify-center">
-		<!-- tmp для отладки -->
+	<!-- <div class="flex flex-col items-center justify-center">
+		
 		{#if $supauser.user != null}
 			<p>x{$supauser.user.id}</p>
 		{/if}
-	</div>
+	</div> -->
 	<!-- tmp для проверки центрирования -->
 	<!-- <p class="self-center">middle tmp</p> -->
 
 	<!-- место для компонентов -->
-	<svelte:component this={comp} hide={hideSignIn} class="self-center" />
-
+	<div class="w-1/2  bg-sky-500/75 m-auto">
+	    <svelte:component this={comp} hide={hideSignIn} class="m-auto " />
+    </div>
 	<div class=" p-2 bg-blue-300">
 		<p>
 			Footer (подвал). Всегда должен быть внизу страницы. Родитель д.б.
