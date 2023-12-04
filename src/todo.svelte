@@ -73,12 +73,20 @@
         <div class="flex flex-col">
             {#each todos as item}
                 <div
-                    class="flex flex-row justify-between p-2 rw"
+                    class="[&:not(:first-child)]:border-l
+                            [&:not(:first-child)]:border-r
+                            [&:not(:first-child)]:border-b
+                            [&:first-child]:border
+                            border-gray-400
+                            flex flex-row
+                            justify-between
+                            p-2
+                            rw"
                 >
                     <div>
                         {item.id}
                     </div>
-                    <div style="flex-grow: 1;">
+                    <div>
                         <input
                             id={item.id}
                             on:change={onChange}
@@ -86,7 +94,7 @@
                             type="checkbox"
                         />
                     </div>
-                    <div style="flex-grow: 1; text-align:right">
+                    <div class="grow" style=" text-align:right" >
                         {item.content}
                     </div>
                 </div>
@@ -105,11 +113,15 @@
 </div>
 
 <style>
-    .rw:first-child {
+    /* .rw:first-child {
         border: 1px solid red;
     }
     .rw:not(:first-child) {
         border: 1px solid red;
         border-width: 0 1px 1px 1px;
-    }
+    } */
+
+    /* .rw{
+        border-bottom: 1px solid blue;
+        } */
 </style>
