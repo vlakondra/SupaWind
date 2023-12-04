@@ -35,7 +35,7 @@
     }
 
     async function addToList() {
-         //обработка (fake) добавления
+        //обработка (fake) добавления
         const { data, error } = await supabase
             .from("mytodos")
             .insert([{ content: "новое дело 6", done: false }])
@@ -45,7 +45,11 @@
         if (data) {
             todos = [
                 ...todos,
-                { content: data[0].content, done: data[0].done },
+                {
+                    id: data[0].id,
+                    content: data[0].content,
+                    done: data[0].done,
+                },
             ];
         }
     }
@@ -60,19 +64,21 @@
             .eq("id", ev.srcElement.id)
             .select();
 
-        console.log(data,error)
-     }
+        console.log(data, error);
+    }
 </script>
 
 <div>
     {#if todos}
         <div class="flex flex-col">
             {#each todos as item}
-                <div class="flex flex-row justify-between">
+                <div
+                    class="flex flex-row justify-between p-2 rw"
+                >
                     <div>
                         {item.id}
                     </div>
-                    <div>
+                    <div style="flex-grow: 1;">
                         <input
                             id={item.id}
                             on:change={onChange}
@@ -80,7 +86,7 @@
                             type="checkbox"
                         />
                     </div>
-                    <div>
+                    <div style="flex-grow: 1; text-align:right">
                         {item.content}
                     </div>
                 </div>
@@ -97,3 +103,13 @@
         <button on:click={refresh}> Обновить </button>
     </div>
 </div>
+
+<style>
+    .rw:first-child {
+        border: 1px solid red;
+    }
+    .rw:not(:first-child) {
+        border: 1px solid red;
+        border-width: 0 1px 1px 1px;
+    }
+</style>

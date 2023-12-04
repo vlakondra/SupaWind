@@ -48,9 +48,10 @@
 	<!-- <p class="self-center">middle tmp</p> -->
 
 	<!-- место для компонентов -->
-	<div class="w-1/2  bg-sky-500/75 m-auto">
-	    <svelte:component this={comp} hide={hideSignIn} class="m-auto " />
+	<div class="w-1/2  m-auto">
+	    <svelte:component this={comp} hide={hideSignIn} />
     </div>
+
 	<div class=" p-2 bg-blue-300">
 		<p>
 			Footer (подвал). Всегда должен быть внизу страницы. Родитель д.б.
@@ -61,8 +62,8 @@
 
 <style>
 	:global(body) {
-		height: 100vh;
-		background-color: rgb(235, 245, 245);
+		min-height: 100vh;
+		background-color: rgb(228, 238, 238);
 	}
 
 	/* навигацию сделать компонентом */
