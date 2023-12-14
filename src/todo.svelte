@@ -68,6 +68,9 @@
     }
 </script>
 
+<!-- flex flex-row
+justify-between -->
+
 <div>
     {#if todos}
         <div class="flex flex-col">
@@ -78,15 +81,14 @@
                             [&:not(:first-child)]:border-b
                             [&:first-child]:border
                             border-gray-400
-                            flex flex-row
-                            justify-between
+                            todorow
                             p-2
                             rw"
                 >
                     <div>
                         {item.id}
                     </div>
-                    <div>
+                    <div class='check'>
                         <input
                             id={item.id}
                             on:change={onChange}
@@ -113,6 +115,16 @@
 </div>
 
 <style>
+    .todorow{
+        display: grid;
+        gap: 0px;
+        grid-template-columns:  20px 20px 1fr;
+        grid-template-rows: 1fr;
+        align-items: center;
+    }
+    .check{
+        text-align: center;
+    }
     /* .rw:first-child {
         border: 1px solid red;
     }

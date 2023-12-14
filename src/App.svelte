@@ -19,9 +19,15 @@
 </script>
 
 
-<main
+<!-- <main
 	class="border border-gray-400 flex flex-col align-middle justify-between min-h-screen h-auto p-2 m-2"
+> -->
+<main
+	class="border border-gray-400 flex container min-h-screen h-auto p-2 m-2"
 >
+
+
+
 	<!-- заготовка для top-меню -->
 
 	<ul class="flex flex-row h-10 content-center flex-wrap px-3 bg-cyan-500">
@@ -65,6 +71,13 @@
 		min-height: 100vh;
 		background-color: rgb(228, 238, 238);
 	}
+
+.container{
+	
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+}
 
 	/* навигацию сделать компонентом */
 	ul.flex li {
