@@ -6,41 +6,55 @@
 
 	import { supauser } from "./store";
 	import Signup from "./Sign_In.svelte";
-	import Todo from "./todo.svelte"
+	import Todo from "./todo.svelte";
+	import Chart from "./Chart.svelte";
 
 	let comp = null;
 
-	function toggleComp() {
-		comp = Signup; //SignIn //Form
+	function toggleComp(ev) {
+		console.log(ev.target.id);
+		switch (ev.target.id) {
+			case "signup":
+				comp = Signup;
+				break;
+
+			case "plot": 
+				comp = Chart;
+				break;
+
+			default:
+				comp = null;
+				break;
+		}
+
+		//comp = Signup; //SignIn //Form
 	}
 	function hideSignIn() {
 		comp = null;
 	}
 </script>
 
-
 <!-- <main
 	class="border border-gray-400 flex flex-col align-middle justify-between min-h-screen h-auto p-2 m-2"
 > -->
-<main
-	class="border border-gray-400 flex container min-h-screen h-auto p-2 m-2"
->
-
-
-
+<main class="border border-gray-400 flex container min-h-screen h-auto p-2 m-2">
 	<!-- заготовка для top-меню -->
 
 	<ul class="flex flex-row h-10 content-center flex-wrap px-3 bg-cyan-500">
 		<li>
-			<button on:click={toggleComp}>Вход</button>
+			<button id="signup" on:click={toggleComp}>Вход</button>
 		</li>
+		<li>
+			<button id="plot" on:click={toggleComp}>График</button>
+		</li>
+
 		<li>
 			<button on:click={() => (comp = null)}>Hide</button>
 		</li>
 		{#if $supauser.user}
-		    <li>
-			    <button on:click={() => (comp = Todo)}>Список дел</button>
-		    </li>
+			<li>
+				<button on:click={() => (comp = Todo)}>Список дел</button>
+			</li>
 		{/if}
 	</ul>
 
@@ -54,9 +68,9 @@
 	<!-- <p class="self-center">middle tmp</p> -->
 
 	<!-- место для компонентов -->
-	<div class="w-1/2  m-auto">
-	    <svelte:component this={comp} hide={hideSignIn} />
-    </div>
+	<div class="w-1/2 m-auto">
+		<svelte:component this={comp} hide={hideSignIn} />
+	</div>
 
 	<div class=" p-2 bg-blue-300">
 		<p>
@@ -72,12 +86,11 @@
 		background-color: rgb(228, 238, 238);
 	}
 
-.container{
-	
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 100%;
-}
+	.container {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		grid-template-columns: 100%;
+	}
 
 	/* навигацию сделать компонентом */
 	ul.flex li {
