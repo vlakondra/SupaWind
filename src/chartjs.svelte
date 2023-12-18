@@ -24,4 +24,7 @@
     );
 </script>
 
-<Line {data} on:Resize={()=>console.log(111) } options={{ responsive: false }} />
+<Line {data} 
+width={350}
+height={250}
+options={{ maintainAspectRatio: false,responsive: true }}   />
