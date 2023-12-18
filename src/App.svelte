@@ -7,12 +7,11 @@
 	import { supauser } from "./store";
 	import Signup from "./Sign_In.svelte";
 	import Todo from "./todo.svelte";
-	import Chart from "./Chart.svelte";
+	import Chart from "./chartjs.svelte";
 
 	let comp = null;
 
 	function toggleComp(ev) {
-		console.log(ev.target.id);
 		switch (ev.target.id) {
 			case "signup":
 				comp = Signup;
@@ -27,17 +26,18 @@
 				break;
 		}
 
-		//comp = Signup; //SignIn //Form
 	}
 	function hideSignIn() {
 		comp = null;
 	}
 </script>
 
-<!-- <main
+<main
 	class="border border-gray-400 flex flex-col align-middle justify-between min-h-screen h-auto p-2 m-2"
-> -->
-<main class="border border-gray-400 flex container min-h-screen h-auto p-2 m-2">
+>
+
+<!-- <main class="border border-gray-400 flex container min-h-screen h-auto p-2 m-2"> -->
+	
 	<!-- заготовка для top-меню -->
 
 	<ul class="flex flex-row h-10 content-center flex-wrap px-3 bg-cyan-500">
