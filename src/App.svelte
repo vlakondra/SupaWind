@@ -9,6 +9,7 @@
 	import Todo from "./todo.svelte";
 	import Chart from "./chartjs.svelte";
 	import FusionChrt  from './fusionchart.svelte'
+	import CakeChrt from './cake.svelte'
 
 	let comp = null;
 
@@ -25,6 +26,11 @@
 			case "fusion": 
 				comp = FusionChrt;
 				break;	
+
+				case "cake": 
+				comp = CakeChrt;
+				break;	
+
 
 			default:
 				comp = null;
@@ -55,6 +61,10 @@
 
 		<li>
 			<button id="fusion" on:click={toggleComp}>Fusion</button>
+		</li>
+
+		<li>
+			<button id="cake" on:click={toggleComp}>LayerCake</button>
 		</li>
 
 
