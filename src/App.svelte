@@ -8,6 +8,7 @@
 	import Signup from "./Sign_In.svelte";
 	import Todo from "./todo.svelte";
 	import Chart from "./chartjs.svelte";
+	import FusionChrt  from './fusionchart.svelte'
 
 	let comp = null;
 
@@ -20,6 +21,10 @@
 			case "plot": 
 				comp = Chart;
 				break;
+
+			case "fusion": 
+				comp = FusionChrt;
+				break;	
 
 			default:
 				comp = null;
@@ -45,8 +50,13 @@
 			<button id="signup" on:click={toggleComp}>Вход</button>
 		</li>
 		<li>
-			<button id="plot" on:click={toggleComp}>График</button>
+			<button id="plot" on:click={toggleComp}>ChartJS</button>
 		</li>
+
+		<li>
+			<button id="fusion" on:click={toggleComp}>Fusion</button>
+		</li>
+
 
 		<li>
 			<button on:click={() => (comp = null)}>Hide</button>
