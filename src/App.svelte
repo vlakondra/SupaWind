@@ -10,11 +10,15 @@
 	import Chart from "./chartjs.svelte";
 	import FusionChrt  from './fusionchart.svelte'
 	import CakeChrt from './cake.svelte'
+	import Ggb1 from './ggb1.svelte'
 
 	let comp = null;
 
 	function toggleComp(ev) {
 		switch (ev.target.id) {
+			case 'ggb':
+				comp = Ggb1;
+				break
 			case "signup":
 				comp = Signup;
 				break;
@@ -43,6 +47,10 @@
 	}
 </script>
 
+<svelte:head>
+  <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+</svelte:head>
+
 <main
 	class="border border-gray-400 flex flex-col align-middle justify-between min-h-screen h-auto p-2 m-2"
 >
@@ -52,6 +60,9 @@
 	<!-- заготовка для top-меню -->
 
 	<ul class="flex flex-row h-10 content-center flex-wrap px-3 bg-cyan-500">
+		<li>
+			<button id="ggb" on:click={toggleComp}>GeoGebra</button>
+		</li>
 		<li>
 			<button id="signup" on:click={toggleComp}>Вход</button>
 		</li>
