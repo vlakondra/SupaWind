@@ -21,7 +21,7 @@
         showToolBarHelp: false,
         errorDialogsActive: true,
         useBrowserForJS: false,
-        filename: "src/MyTest6.ggb",
+        filename: "src/MyTest8.ggb",
         // material_id:"xu9j3sgq",
         //appletOnLoad:{regs},
         //ggbBase64:
@@ -41,14 +41,10 @@
         await ggbApplet.inject("appcont");
     });
 
-    //     afterUpdate(() => {
-    //     console.log('the component is about to update');
-    //     setTimeout(()=> app1.registerObjectClickListener("A",upd),2000)
-    // });
-
+  
     async function upd() {
-        await console.log("???", "click");
-        let res = app1.getValue("istrue");
+        await console.log("Events!");
+        let res = await app1.getValue("istrue");
         if (res) {
             result = "Победа!!!";
         } else {
@@ -61,9 +57,9 @@
     }
 </script>
 
-<!-- <svelte:window on:keydown={regs} /> -->
 
 <h1 style="padding:10px; text-align:center">Упражнение</h1>
+
 <div id="appcont"></div>
 
 
